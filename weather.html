@@ -1,0 +1,27 @@
+<html>
+  <head><title>Weather</title></head>
+  <body>
+    <form action="/" method="get">
+      <label for="lat">Latitude:</label>
+      <input type="text" id="lat" name="lat" value="{{.Lat}}"><br><br>
+      <label for="lng">Longitude:</label>
+      <input type="text" id="lng" name="lng" value="{{.Lng}}"><br><br>
+      <input type="submit" value="Submit">
+
+      {{if .Error}}
+        <div>
+          <span>{{.Error}}</span>
+        </div>
+      {{end}}
+
+      {{if .Weather}}
+        <div>
+          <div id="icon">
+            <img id="wicon" src="http://openweathermap.org/img/w/{{.Weather.Icon}}.png" alt="Weather icon">
+          </div>
+          <div>{{.Weather.Main}} ({{.Weather.Description}})</div>
+        </div>
+      {{end}}
+    </form>
+  </body>
+</html>
